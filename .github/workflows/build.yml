@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+    - name: 🚀 Build
+      run: npm ci
     - name: 🔢 Set version
       run: npm run setversion
     - name: 🎁 Package
