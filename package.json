@@ -1,0 +1,49 @@
+{
+  "name": "iwa-toolkit",
+  "publisher": "ngd-seattle",
+  "displayName": "InterWork Alliance Toolkit",
+  "version": "0.0.0",
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#242424",
+    "theme": "dark"
+  },
+  "description": "Toolkit for making use of the IWA Token Taxonomy Framework within VS Code",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngdseattle/iwa-toolkit.git"
+  },
+  "author": "Neo Global Development Seattle",
+  "engines": {
+    "vscode": "^1.45.1"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "keywords": [
+    "Neo",
+    "Blockchain",
+    "Token",
+    "Ethereum"
+  ],
+  "scripts": {
+    "package": "vsce package",
+    "setversion": "gulp setversion"
+  },
+  "extensionPack": [
+    "ngd-seattle.visual-token-designer",
+    "ngd-seattle.neo-visual-devtracker",
+    "ngd-seattle.neo-contract-debug"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngdseattle/iwa-toolkit/issues"
+  },
+  "homepage": "https://github.com/ngdseattle/iwa-toolkit#readme",
+  "devDependencies": {
+    "gulp": "4.0.0",
+    "nerdbank-gitversioning": "^3.1.91",
+    "vsce": "^1.75.0"
+  }
+}

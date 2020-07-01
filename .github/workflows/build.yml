@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  buildextension:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: ⏳ Checkout
+      uses: actions/checkout@v2
+    - name: 💿 Setup NodeJS
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: 🔢 Set version
+      run: npm run setversion
+    - name: 🎁 Package
+      id: package
+      shell: bash
+      run: |
+        npm run package
+        cp iwa-toolkit-*.vsix iwa-toolkit.vsix
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+    - name: 🌎 Release
+      uses: djnicholson/release-action@v2.4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag-name: v0.0-${{ steps.package.outputs.branch }}
+        release-name: 'Rolling build'
+        asset-name: 'iwa-toolkit.vsix'
+        file: 'iwa-toolkit.vsix'
